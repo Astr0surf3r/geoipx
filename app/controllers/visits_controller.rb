@@ -26,9 +26,9 @@ class VisitsController < ApplicationController
   def new
     @geocity = GeoIP.new("#{Rails.root}/db/GeoLiteCity.dat").city(request.remote_ip)
 
-    @geoip = GeoIP.new("#{Rails.root}/db/GeoIP.dat").city(request.remote_ip)
+    @geoip = GeoIP.new("#{Rails.root}/db/GeoIP.dat").country(request.remote_ip)
 
-    @geoipa = GeoIP.new("#{Rails.root}/db/GeoIPASNum.dat").city(request.remote_ip)
+    @geoipa = GeoIP.new("#{Rails.root}/db/GeoIPASNum.dat").asn(request.remote_ip)
 
     @visit = Visit.new
     
