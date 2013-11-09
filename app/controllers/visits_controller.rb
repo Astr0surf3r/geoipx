@@ -24,7 +24,12 @@ class VisitsController < ApplicationController
   # GET /visits/new
   # GET /visits/new.json
   def new
-    @geo = GeoIP.new("#{Rails.root}/db/GeoLiteCity.dat").city(request.remote_ip)
+    @geocity = GeoIP.new("#{Rails.root}/db/GeoLiteCity.dat").city(request.remote_ip)
+
+    @geoip = GeoIP.new("#{Rails.root}/db/GeoIP.dat").city(request.remote_ip)
+
+    @geoipa = GeoIP.new("#{Rails.root}/db/GeoIPASNum.dat").city(request.remote_ip)
+
     @visit = Visit.new
     
     respond_to do |format|
